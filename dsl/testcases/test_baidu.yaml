@@ -1,0 +1,4 @@
+testcase:
+  name: Bing搜索霸天虎
+  model: bing_search
+  data: search_data.json::decepticons

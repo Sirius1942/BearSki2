@@ -1,0 +1,29 @@
+name: "百度新闻查询测试"
+description: "访问百度并查询今日新闻，每步截图"
+
+steps:
+  - action: navigate
+    url: "https://www.baidu.com"
+  
+  - action: screenshot
+    path: "screenshots/step1_homepage.png"
+  
+  - action: click
+    selector: "input#kw"
+  
+  - action: type
+    selector: "input#kw"
+    text: "今日新闻"
+  
+  - action: screenshot
+    path: "screenshots/step2_input.png"
+  
+  - action: click
+    selector: "input#su"
+  
+  - action: wait
+    selector: "div#content_left"
+    timeout: 5000
+  
+  - action: screenshot
+    path: "screenshots/step3_results.png"

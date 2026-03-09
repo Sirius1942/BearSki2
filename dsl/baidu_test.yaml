@@ -1,0 +1,46 @@
+name: 百度搜索测试
+description: 访问百度首页并搜索
+
+steps:
+  - name: 打开百度首页
+    driver: ui
+    action: navigate
+    params:
+      url: "https://www.baidu.com"
+  
+  - name: 等待页面加载
+    driver: ui
+    action: wait
+    params:
+      seconds: 2
+  
+  - name: 截图 - 百度首页
+    driver: ui
+    action: screenshot
+    params:
+      path: "screenshots/baidu_home.png"
+  
+  - name: 输入搜索关键词
+    driver: ui
+    action: fill
+    params:
+      selector: "#kw"
+      value: "BearSki 自动化测试"
+  
+  - name: 点击搜索按钮
+    driver: ui
+    action: click
+    params:
+      selector: "#su"
+  
+  - name: 等待搜索结果
+    driver: ui
+    action: wait
+    params:
+      seconds: 2
+  
+  - name: 截图 - 搜索结果
+    driver: ui
+    action: screenshot
+    params:
+      path: "screenshots/baidu_search.png"

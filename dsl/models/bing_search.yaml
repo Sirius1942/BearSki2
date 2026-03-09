@@ -1,0 +1,29 @@
+model:
+  name: Bing搜索
+  
+  flow:
+    - step: 打开Bing
+      keyword: ui.open
+      params:
+        url: "https://www.bing.com"
+    
+    - step: 输入搜索
+      keyword: ui.input
+      params:
+        selector: "#sb_form_q"
+        value: "${data.keyword}"
+    
+    - step: 提交搜索
+      keyword: ui.submit
+      params:
+        selector: "#sb_form_q"
+    
+    - step: 等待3秒
+      keyword: ui.sleep
+      params:
+        seconds: 3
+    
+    - step: 截图
+      keyword: ui.screenshot
+      params:
+        path: "screenshots/${data.keyword}.png"

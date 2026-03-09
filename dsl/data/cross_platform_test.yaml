@@ -1,0 +1,10 @@
+# 跨平台测试数据
+
+testdata:
+  - case_id: CP001
+    pc_url: http://localhost:3000/tasks
+    task_title: 测试任务-横炮IM开发
+    api_url: http://localhost:8000/api
+    mobile_user_id: user_001
+    app_package: com.wheeljack.im
+    app_activity: .MainActivity

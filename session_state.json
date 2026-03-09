@@ -1,0 +1,12 @@
+{
+  "jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "cookies": {},
+  "headers": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "X-Client-Version": "1.0.0"
+  },
+  "variables": {
+    "username": "testuser"
+  },
+  "base_url": null
+}

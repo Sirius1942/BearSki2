@@ -1,0 +1,35 @@
+name: 网页自动化控制示例
+description: 通过 DSL 控制网页操作
+
+steps:
+  - name: 打开网页
+    driver: ui
+    action: navigate
+    params:
+      url: "https://www.example.com"
+  
+  - name: 等待页面加载
+    driver: ui
+    action: wait
+    params:
+      seconds: 2
+  
+  - name: 点击按钮
+    driver: ui
+    action: click
+    params:
+      selector: "button.submit"
+  
+  - name: 输入文本
+    driver: ui
+    action: fill
+    params:
+      selector: "input[name='username']"
+      value: "test_user"
+  
+  - name: 选择下拉框
+    driver: ui
+    action: select
+    params:
+      selector: "select#country"
+      value: "China"

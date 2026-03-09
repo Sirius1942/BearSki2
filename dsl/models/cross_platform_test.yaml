@@ -1,0 +1,73 @@
+# 跨平台混合测试模型
+# 场景：PC 端创建任务 → 发送通知 → 移动端查看
+
+model:
+  name: 跨平台业务流程测试
+  description: PC端操作 + API调用 + 移动端验证
+  
+steps:
+  # 步骤 1: PC 端操作（UI）
+  - name: PC端创建任务
+    driver: ui
+    action: navigate
+    url: ${pc_url}
+    
+  - name: 输入任务标题
+    driver: ui
+    action: input
+    locator: id=task_title
+    text: ${task_title}
+    
+  - name: 点击创建按钮
+    driver: ui
+    action: click
+    locator: id=create_button
+    
+  - name: PC端截图
+    driver: ui
+    action: screenshot
+    path: screenshots/pc_created.png
+    
+  # 步骤 2: 发送 API 消息
+  - name: 发送通知消息
+    driver: rest
+    action: post
+    url: ${api_url}/notifications
+    body:
+      title: 新任务创建
+      message: ${task_title}
+      user_id: ${mobile_user_id}
+    
+  - name: 验证通知发送成功
+    driver: rest
+    action: assert
+    field: status
+    expected: success
+    
+  # 步骤 3: 移动端操作
+  - name: 启动移动端APP
+    driver: mobile
+    action: start_app
+    package: ${app_package}
+    activity: ${app_activity}
+    
+  - name: 点击通知列表
+    driver: mobile
+    action: click
+    locator: id=notification_list
+    
+  - name: 验证任务标题
+    driver: mobile
+    action: click
+    locator: text=${task_title}
+    
+  - name: 移动端截图
+    driver: mobile
+    action: screenshot
+    path: screenshots/mobile_verified.png
+    
+  # 步骤 4: 完成业务流程
+  - name: 标记任务已读
+    driver: mobile
+    action: click
+    locator: id=mark_read_button

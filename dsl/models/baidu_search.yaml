@@ -1,0 +1,35 @@
+model:
+  name: 百度搜索
+  
+  flow:
+    - step: 打开百度首页
+      keyword: ui.open
+      params:
+        url: "https://www.baidu.com"
+    
+    - step: 等待搜索框加载
+      keyword: ui.wait
+      params:
+        selector: "#kw"
+        timeout: 10000
+    
+    - step: 输入搜索关键词
+      keyword: ui.input
+      params:
+        selector: "#kw"
+        value: "${data.keyword}"
+    
+    - step: 点击搜索
+      keyword: ui.click
+      params:
+        selector: "#su"
+    
+    - step: 等待3秒
+      keyword: ui.sleep
+      params:
+        seconds: 3
+    
+    - step: 截图
+      keyword: ui.screenshot
+      params:
+        path: "screenshots/${data.keyword}.png"
